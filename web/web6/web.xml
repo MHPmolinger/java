@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	
+	<filter>
+	<filter-name>CharacterEncodingFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.CharacterEncodingFilter</filter-class>
+	<init-param>
+	 <param-name>encoding</param-name>
+	 <param-value>UTF-8</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>CharacterEncodingFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	<filter-name>NoCacheFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.NoCacheFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>NoCacheFilter</filter-name>
+	<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+	
+	<filter>
+	<filter-name>CacheFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.CacheFilter</filter-class>
+	<!-- 配置图片、js、css文件要缓存的时间 -->
+	<init-param>
+	<param-name>jpg</param-name>
+	<param-value>2</param-value>
+	</init-param>
+	<init-param>
+	<param-name>js</param-name>
+	<param-value>6</param-value>
+	</init-param>
+	<init-param>
+	<param-name>css</param-name>
+	<param-value>6</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>CacheFilter</filter-name>
+	<url-pattern>*.jpg</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	<filter-name>CacheFilter</filter-name>
+	<url-pattern>*.js</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+	<filter-name>CacheFilter</filter-name>
+	<url-pattern>*.css</url-pattern>
+	</filter-mapping>
+	<filter>
+	<filter-name>ManagerLoginFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.ManagerLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>ManagerLoginFilter</filter-name>
+	<url-pattern>/manager/*</url-pattern>
+	</filter-mapping>
+	<!--  
+	<filter>
+	<filter-name>AutoLoginFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.AutoLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>AutoLoginFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	-->
+	<filter>
+	<filter-name>WordsFilter</filter-name>
+	<filter-class>cn.zdxy.web.filter.WordsFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>WordsFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- 
+	<filter>
+	<filter-name>FilterDemo01</filter-name>
+	<filter-class>cn.zdxy.web.filter.FilterDemo01</filter-class>
+	<init-param>
+	<param-name>encoding</param-name>
+	<param-value>utf-8</param-value>
+	</init-param>
+	<init-param>
+	<param-name>schoolname</param-name>
+	<param-value>正德职业技术学院</param-value>
+	</init-param>
+	</filter>
+	<filter-mapping>
+	<filter-name>FilterDemo01</filter-name>
+	<url-pattern>/servlet/FilterTest1Servlet</url-pattern>
+	</filter-mapping>
+	<filter>
+	<filter-name>FilterDemo02</filter-name>
+	<filter-class>cn.zdxy.web.filter.FilterDemo02</filter-class>
+	</filter>
+	<filter-mapping>
+	<filter-name>FilterDemo02</filter-name>
+	<url-pattern>/servlet/FilterTest1Servlet</url-pattern>
+	</filter-mapping>
+	 -->
+	
+  <display-name></display-name>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>FilterTest1Servlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.FilterTest1Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>CharacterEncodingServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.CharacterEncodingServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.ManagerLoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>WordsServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.WordsServlet</servlet-class>
+  </servlet>
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>FilterTest1Servlet</servlet-name>
+    <url-pattern>/servlet/FilterTest1Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CharacterEncodingServlet</servlet-name>
+    <url-pattern>/servlet/CharacterEncodingServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManagerLoginServlet</servlet-name>
+    <url-pattern>/servlet/ManagerLoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/servlet/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WordsServlet</servlet-name>
+    <url-pattern>/servlet/WordsServlet</url-pattern>
+  </servlet-mapping>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

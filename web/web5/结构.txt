@@ -1,0 +1,16 @@
+Java Resources
+	src
+		com.neusoft.javaweb.day07.web.filter
+			CharacterEncodingFilter.java
+			WordsContentFilter.java
+		com.neusoft.javaweb.day07.web.servlet
+			ContentServelt.java
+	words
+		disu.txt
+		gucai.txt
+		huaxue.txt
+WebContent
+	WEB-INF
+		message.jsp
+		web.xml
+	content.jsp

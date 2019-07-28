@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.mybatis.dao.one2one.IdCardMapper">
+   <!-- 
+     public void save(IdCard idcard);
+	
+	public IdCard findById(int cid);
+	
+	public List<IdCard> findAll();
+	
+	public IdCard findOfPersonById(int cid);
+    -->
+    <insert id="save" parameterType="com.neusoft.mybatis.one2one.domain.IdCard">
+      insert into idcard(cardNo) values(#{cardNo})
+    </insert>
+    <select id="findById" resultType="com.neusoft.mybatis.one2one.domain.IdCard">
+      select * from idcard where cid=#{cid}
+    </select>
+    <select id="findAll" resultType="com.neusoft.mybatis.one2one.domain.IdCard">
+       select * from idcard
+    </select>
+    <!-- 
+        多表查询的写法注意点：
+          1.注意列的别名的使用，如果是关联另外一个实体，我们需要在对象属性的别名上添加双引号或单引号，例如    p.pid  as 'person.pid'
+             这里的person表示对应idcard实体中的属性名称为person [private Person person;]
+          2.本实例中采用的是等值连接的写法
+     -->
+    <select id="findOfPersonById" resultType="com.neusoft.mybatis.one2one.domain.IdCard">
+        select c.cid cid,c.cardNo cardNo,p.pid 'person.pid',p.name 'person.name',
+               p.gender "person.gender"
+        from idcard c,person p
+        where c.cid=p.idcard_cid and c.cid=#{cid}
+    </select>
+    
+   
+</mapper>

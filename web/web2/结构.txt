@@ -1,0 +1,24 @@
+Java Resources
+	src
+		com.isoftstone.um.dao
+			UserDao.java
+		com.isoftstone.um.daomain
+			Department.java
+			User.java
+		com.isoftstone.um.utils
+			WebUtils.java
+		com.isoftstone.nm.web.servlet
+			AddDeptServlet.java
+			DownLoadFileServlet.java
+			ShowDownLoadFilesServlet.java
+			UserRegisterServlet.java
+			UserServlet.java
+WebContent
+	downloads
+	WEB-INF
+		lib
+			mysql-connector-java-5.0.8-bin .jar
+		web.xml
+	add_Dept.html
+	add.html
+	register.html

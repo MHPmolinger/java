@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ <!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+	<struts>
+	  <include file="email.xml"/>
+	 <constant name="struts.action.extension" value="go,do,action,,"></constant>
+	   <!-- package标签的作用：类似于java中的包结构，我们会把一组相关的java类放到一个包下
+	       package标签的属性介绍：
+	         name:给该包起一个名称，作用和Java中的包名类似，要确保唯一
+	         namespace:名称空间，默认是“/"，相对于当前项目的跟路径，要想访问该包下的action则
+	         在请求路径中必须包含该namespace指定的路径
+	         extends:表示继承的意思，和Java中的继承思想相一致，为了让我们该包下的所有action都
+	         具备struts2框架底层给我们提供的功能，我们需要让我们的package继承struts-default,
+	    -->
+	   <package name="base" namespace="/base" extends="struts-default">
+	      <global-results>
+	          <result name="error">/WEB-INF/error.jsp</result>
+	      </global-results>
+	      <!-- action标签的作用：
+	         一个action标签对应一个自定义的action类，该类和springmvc中的处理器handler类似，通常我们会让我们的自定义
+	         action继承ActionSupport类，
+	         name属性：用来指定外界的访问路径的
+	         class属性：用来指定自定义action类的完整路径（包名+类名）
+	          method属性：用来指定调用该action类中的那个方法，默认是调用execute方法的，
+	       -->
+	       <action name="hello" class="com.neusoft.struts2.web.action.HelloWorldAction"  method="execute" >
+	            <!-- result标签的作用：
+	                用来指定action类中的字符串返回值的，一个字符串返回值就相当于是一个逻辑视图名称，
+	                name属性就相当于action方法中返回的一个字符串，相当于逻辑视图名称，标签的中间内容，就相当于是物理视图
+	             -->
+	          <result name="success"  type="dispatcher">/WEB-INF/jsp/success.jsp</result>
+	       </action>
+	       <action name="*_*"  class="com.neusoft.struts2.web.action.{1}" method="{2}">
+	         <result name="{2}">/WEB-INF/jsp/user/{2}.jsp</result>
+	       </action>
+	   </package>
+	
+	</struts>
+	

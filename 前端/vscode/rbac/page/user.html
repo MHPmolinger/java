@@ -1,0 +1,141 @@
+<div id="user">
+    <div class="">
+       <button class="layui-btn layui-btn-normal layui-btn-sm" id="add_user"><i class="layui-icon">&#xe654;</i>新增用户</button>
+    </div>
+    <!-- 该table标签时layui的ui标签元素 -->
+    <table class="layui-hide" id="test" lay-filter="demo"></table>
+</div>
+<div id="edit_user_panel" style="width:400px;padding-top: 20px;padding-bottom: 30px;display: none;">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item" style="margin:0px 40px;">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户ID</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="user_id" id="user_id" autocomplete="off" value="" class="layui-input"
+                        disabled>
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="user_name" id="user_name" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="user_pwd" id="user_pwd" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="user_repwd" id="user_repwd" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">用户状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" id="user_status" name="open" lay-skin="switch" lay-filter="switchTest"
+                        lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal layui-btn-radius" id="update_user">立即提交</a>
+                    <!-- <button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button> -->
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div id="add_user_panel" style="width:400px;padding-top: 20px;padding-bottom: 30px;display: none;">
+    <form class="layui-form layui-form-pane" action="">
+        <div class="layui-form-item" style="margin:0px 40px;">
+            <div class="layui-inline">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="user_name" id="add_user_name" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="user_pwd" id="add_user_pwd" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">确认密码</label>
+                <div class="layui-input-inline">
+                    <input type="password" name="user_repwd" id="add_user_repwd" lay-verify="required" autocomplete="off"
+                        class="layui-input">
+                </div>
+            </div>
+            <div class="layui-inline">
+                <label class="layui-form-label">用户状态</label>
+                <div class="layui-input-block">
+                    <input type="checkbox" checked="" id="add_user_status" name="open" lay-skin="switch" lay-filter="switchTest"
+                        lay-text="ON|OFF">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal layui-btn-radius" id="add_user_submit">立即提交</a>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<div id="user_ref_role_panel" style="width:400px;padding-top: 20px;padding-bottom: 30px;display: none;">
+    <form class="layui-form layui-form-pane" action="">
+
+            <div class="layui-form-item" pane="">
+                <label class="layui-form-label">可选角色：</label>
+                <div class="layui-input-block" id="show_roles">
+                    <!-- <input type="checkbox" name="like1[write]" lay-skin="primary" title="写作" checked="">
+                    <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读理解">
+                    <input type="checkbox" name="like1[write]" lay-skin="primary" title="写" checked="">
+                    <input type="checkbox" name="like1[read]" lay-skin="primary" title="阅读"> -->
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <a class="layui-btn layui-btn-normal layui-btn-radius" id="user_ref_role_submit">立即提交</a>
+                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<script type="text/html" id="barDemo">
+<a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+<a class="layui-btn layui-btn-xs" lay-event="ref_role">关联角色</a>
+</script>
+<!-- 
+前端模板引擎  Handlebars  ***    *****
+-->
+<script id="createTime" type="text/html">
+    {{#   
+        var date = new Date();
+        date.setTime(d.user_ctime);
+        return date.Format("yyyy-MM-dd hh:mm:ss"); 
+    }} 
+</script>

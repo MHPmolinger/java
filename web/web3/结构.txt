@@ -1,0 +1,10 @@
+Java Resources
+	src
+		com.isoftstone.web
+			FileUploadServlet.java
+		笔记.txt
+WebContent
+	uploads
+	WEB-INF
+		web.xml
+	upload.html

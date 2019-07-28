@@ -1,0 +1,27 @@
+java Resources
+	src
+		com.nuesoft.springmvc.dao
+			UserDao.java
+		com.nuesoft.springmvc.domain
+			User.java
+		com.nuesoft.springmvc.web.handler
+			TestMethodResultHandler.java
+			UserAnnotationHandler.java
+			UserHandler.java
+			UserRequestHandler.java
+		day02笔记.txt
+		springmvc.xml
+WebContent
+	WEB-INF
+		jsp
+			test
+				info.jsp
+			user
+				add.jsp
+				success.jsp
+				test.jsp
+			success.jsp
+		lib
+		SpringMVC-servlet.xml
+		web.xml
+	index.jsp	

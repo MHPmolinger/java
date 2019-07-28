@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<style type="text/css">
+	*{
+background-color:#0080c0;
+}
+fieldset{
+width:50%;
+margin:5px auto;
+}
+a{
+color:white;
+text-decoration:none;
+}
+.a{
+display:block;
+float:right;}
+a:hover{
+color:white;
+background-color:green;}
+#vl,#vali{
+	display:none;
+}
+		</style>
+		<script>
+		function vl(){
+			if(getComputedStyle(document.getElementById("vl")).display=="none"){
+			document.getElementById("vl").style.display="block";
+			return;
+			}
+			if(getComputedStyle(document.getElementById("vl")).display=="block"){
+			document.getElementById("vl").style.display="none";
+			}
+		}
+		function vali(){
+			if(getComputedStyle(document.getElementById("vali")).display=="none"){
+			document.getElementById("vali").style.display="block";
+			return;
+			}
+			if(getComputedStyle(document.getElementById("vali")).display=="block"){
+			document.getElementById("vali").style.display="none";
+			}
+		}
+		</script>
+		<title></title>
+	</head>
+	<body>
+	<fieldset>
+	<legend><a name="s">目录</a></legend>
+		<ol>
+			<li><a href="#a1">for遍历对象</a></li>
+			<li><a href="#a2">js使用方式</a></li>
+			<li><a href="#a3">with语句，'避免对象.'</a></li>
+			<li><a href="#a4">动态函数</a></li>
+			<li><a href="#a5">匿名函数</a></li>
+			<li><a href="#a6">数据类型</a></li>
+			<li><a href="#a7">自定义对象</a></li>
+			<li><a href="#a8">总结</a></li>
+			<li><a href="#a9">事件</a></li>
+			<li><a href="#a10">forms</a></li>
+			<li><a href="#a11">类名的操作</a></li>
+			<li><a href="#a12">正则表达式</a></li>
+			<li><a href="#a13">函数</a></li>
+			<li><a href="#a14">应用</a></li>
+		</ol><a class="a" href="index.html#s">主页</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a1">for遍历对象</a></legend>
+<xmp>
+	for(x in p){
+		alert(x+":"+p[x]);
+	}
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a2">js使用方式</a></legend>
+		<dd>引入js文件</dd>
+		<xmp>
+		<script src="s.js"></script></xmp>
+		<dd>在script里编写</dd><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a3">with语句，'避免对象.'</a></legend>
+<xmp>
+	with(p){
+		alert("name:"+name);
+	}
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a4">动态函数</a></legend>
+<xmp>
+	var s=function("x,y","alert(x+y)");
+	s(2,1);//3
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a5">匿名函数</a></legend>
+<xmp>
+	window.onload=function(){
+		alert(5);
+	}
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a6">数据类型</a></legend>
+		<dd>基本数据类型：number,string,boolean,undefined,null</dd>
+		<dd>复杂数据类型：object</dd>
+		<dd>判断数据类型：typeof</dd>
+<xmp>
+	var s="11";
+	alert(y-1);//10
+	alert(typeof(y-1));//number
+	alert(typeof lol);//undefined
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a7">自定义对象</a></legend>
+<xmp>
+	function P(){}
+	var p=new P();
+	p.age=14;
+	p.fun=function(){
+		alert("fun");
+	}
+	var p1 = new Object();
+	p1.age = 12;
+	p1.e = function(){
+		alert(0);
+	}
+</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a8">总结</a></legend>
+		<dd>class：引号内空格隔开类名</dd>
+		<dd>juqery获取CSS属性：$("对象").css("属性")</dd>
+<xmp>
+	$input.css('background-color','red');</xmp>
+		<dd>jquery设置CSS属性：$("对象").css("属性","属性值")</dd>
+<xmp>
+	$input.css('background-color');</xmp>
+		<dd>js原生获取CSS属性：getComputedStyle("对象")."属性"</dd>
+<xmp>
+	getComputedStyle(document.getElementById("b")).display</xmp>
+		<dd>js原生设置CSS属性："对象".style."属性"="属性值";</dd>
+<xmp>
+	document.getElementById("b").style.display="block";</xmp>
+		<dd>JQuery事件：$('input').click(function(){});</dd>
+		<dd>JQuery 添加事件:$('input').bind('dblclick',function(event){}); </dd>
+		<dd>获取元素个数：$("input").size();</dd>
+		<dd>控制台打印：console.log(5);</dd>
+		<dd>有返回值函数的调用：return+函数名</dd>
+		<xmp>
+	<a href="javascript:a()">1</a></xmp>
+<xmp>
+	parseInt("12.3g")//12
+	parseFloat("12.3g")//12.3
+	Number(s)//s/NaN
+	isNaN(s)</xmp>
+		<dd>eval(s)：将字符串s变为表达式计算</dd>
+		<dd>arguments：获取函数的参数，最多25</dd>
+<xmp>
+	function add2(i,j){
+		alert(arguments[2]);
+	}
+	</xmp>
+		<dd>获取元素内容：document.getElementById("a").innerHTML</dd>
+		<dd>设置元素内容：document.getElementById("b").innerHTML="0"</dd>
+		<dd>dom->jquery：var $c= $(c);</dd>
+		<dd>jquery->dom：var u = $u[0];var u= $u.get(0);</dd>
+		<dd>onload():$();jquery的onload()方法</dd>
+		<dt><a href="javascript:vl()">var与let区别</a></dt>
+		<ol id="vl">
+		<li>声明后未赋值，表现相同</li>
+<xmp>
+	var varTest;
+	let letTest;
+	console.log(varTest); //undefined
+	console.log(letTest); //undefined</xmp>
+	<li>使用未声明的变量，表现不同</li>
+<xmp>
+	console.log(varTest); //undefined
+	console.log(letTest); //直接报错</xmp>
+	<li>重复声明同一个变量时，表现不同</li>
+<xmp>
+	var varTest = ' OK';
+	let letTest = 'OK';
+	var varTest = 'changed';
+	let letTest = 'changed'; //直接报错</xmp>
+	<li>变量作用范围，表现不同</li>
+<xmp>
+	var varTest = 'OK';
+	let letTest = 'OK';
+	{
+		var varTest = 'changed';
+		let letTest = 'changed';
+	}
+	console.log(varTest); //"changed"
+	console.log(letTest); //"OK"</xmp>
+	</ol>
+<a class="a" href="#s">目录</a>
+		</fieldset>
+
+		<fieldset>
+		<legend><a name="a9">事件</a></legend>
+		<dd>click：单击</dd>
+		<dd>dblclick：双击</dd>
+		<dd>onmouseover：鼠标移入</dd>
+		<dd>onmouseout：鼠标移出</dd>
+		<xmp></xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+
+		<fieldset>
+		<legend><a name="a10">forms</a></legend>
+		<dd>document.forms：表示获取当前页面的所有表单</dd>
+		<dd>document.forms[0]：表示获取当前页面的第一个表单</dd>
+		<dd>document.forms['e']：表示获取当前页面的name="e"的表单</dd>
+		
+		<a class="a" href="#s">目录</a>
+		</fieldset>
+
+		<fieldset>
+		<legend><a name="a11">类名的操作</a></legend>
+		<dd>addClass：增加类名</dd>
+		<dd>removeClass：移除类名</dd>
+		<dd>toggleClass：开关类名</dd>
+<xmp>
+	$("#o").toggleClass("s");</xmp><a class="a" href="#s">目录</a>
+		</fieldset>
+
+		<fieldset>
+		<legend><a name="a12">正则表达式</a></legend>
+		<dt>创建方式</dt>
+		<dd>字面量创建方式：<xmp>var pattern = /[bc]at/i;</xmp></dd>
+		<dd>实例创建方式：<xmp>var pattern = new RegExp("[bc]at","i");</xmp></dd>
+		<dt>修饰符</dt>
+		<dd>g：多行匹配</dd>
+		<dd>i：忽略大小写</dd>
+		<dd>m：全局匹配</dd>
+		<dt>特性</dt>
+		<dd>贪婪</dd>
+		<dd>惰性</dd>
+		<dt>元字符</dt>
+		<dd>特殊含义</dd>
+<xmp>
+	\d：0-9
+	\w：数字，字母，下划线
+	\s：空格，空白
+	^：开始
+	$：结束
+	[a-z]：选一
+	[^1-9]：非1-9
+	.：除/n外的任何
+	/D：非数字</xmp>
+		<dd>量词</dd>
+<xmp>
+	*：0或n
+	+：1或n
+	？：0或1
+	{n}：n
+	{n,}：n次以上
+	{n,m}：n到m次</xmp>
+		<dt>常用方法</dt>
+		<dd>实例：test()</dd>
+		<dd>字面量：match()</dd>
+		
+	
+		<a class="a" href="#s">目录</a>
+		</fieldset>
+
+<fieldset>
+		<legend><a name="a13">函数</a></legend>
+		<dt>var sid=setTimeout(s,n)：n毫秒后执行s</dt>
+		<dt>clearTimeout(sid)：停止计时</dt>
+		<a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a14">应用</a></legend>
+		<ol>
+		<li><a href="javascript:vali()">前台校验</a></li>
+		<div id="vali">
+<xmp>
+	<style type="text/css">
+		#nv{
+			display: inline-block;
+		}
+	</style>
+	<script type="text/javascript">
+		function fn() {
+			var name = document.getElementById("n").value.trim();
+			var p = "^0[a-z]{1,6}1$";//以0开始，接1位到6位字母，最后以1结束
+			var info=document.getElementById("nv");
+			if(name.match(p)) {
+				info.innerHTML = "<span style='color:green'>ok</span>";
+			} else {
+				info.innerHTML = "<span style='color:red'>failure</span>";
+			}
+		}
+	</script>
+	<body>
+		<input type="text" id="n" onblur="fn()" />	<div id="nv"></div>
+	</body></xmp></div>
+		</ol>
+		<a class="a" href="#s">目录</a>
+		</fieldset>
+	</body>
+</html>

@@ -1,0 +1,12 @@
+Java Resources
+	src
+		com.isoftstone.servlet
+			FirstServlet.java
+			SecondServlet.java
+WebContent
+	js
+		jquery-1.7.2.js
+	WEB-INF
+		web.xml
+	index.html
+	jquerytest.html

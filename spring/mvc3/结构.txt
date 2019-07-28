@@ -1,0 +1,19 @@
+Java Resources
+	src
+		com.neusoft.springmvc.domain
+			Address.java
+			User.java
+		com.neusoft.springmvc.interceptor
+			MySelfInterceptor.java
+		com.neusoft.springmvc.web.handler
+			UserHandler.java
+			UserModelAttributeHandler.java
+		day06笔记.txt
+		springmvc.xml
+WebContent
+	WEB-INF
+		jsp
+			info.jsp
+		lib
+		web.xml
+	index.jsp

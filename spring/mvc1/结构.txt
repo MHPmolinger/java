@@ -1,0 +1,19 @@
+Java Resources
+	src
+		com.neusoft.springmvc.domain
+			User.java
+		com.neusoft.springmvc.web.handler
+			HelloWorldHandler.java
+			XMLHelloContrller.java
+		springmvc.xml
+	config
+		day01笔记.txt
+		springmvc.xml
+WebContent
+	WEB-INF
+		jsp
+			info.jsp
+			success.jsp
+		lib
+		web.xml
+	index.jsp

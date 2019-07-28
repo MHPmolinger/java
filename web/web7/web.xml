@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  
+  <!-- 注册一个监听器 -->
+  <!--     -->
+  <listener>
+  <listener-class>cn.zdxy.web.listener.MyServletContextListener</listener-class>
+  </listener>
+  
+   <listener>
+  <listener-class>cn.zdxy.web.listener.MySessionListener</listener-class>
+  </listener>
+  
+   <listener>
+   <listener-class>cn.zdxy.web.listener.OnlineNumberListener</listener-class>
+   </listener>
+   
+   <listener>
+   <listener-class>cn.zdxy.web.listener.MyServletRequestListener</listener-class>
+   </listener>
+  
+   <listener>
+   <listener-class>cn.zdxy.web.listener.ContextAndSessionAndRequestAttributeListener</listener-class>
+   </listener>
+   
+   <listener>
+   <listener-class>cn.zdxy.web.listener.SessionScaner</listener-class>
+   </listener>
+    
+   <listener>
+   <listener-class>cn.zdxy.web.listener.TimerSendMail</listener-class>
+   </listener>
+
+   <listener>
+   <listener-class>cn.zdxy.web.listener.KichSessionListener</listener-class>
+   </listener>
+  <servlet>
+    <servlet-name>MySessionServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.MySessionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ColseSessionServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.ColseSessionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>KichServlet</servlet-name>
+    <servlet-class>cn.zdxy.web.servlet.KichServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>MySessionServlet</servlet-name>
+    <url-pattern>/servlet/MySessionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ColseSessionServlet</servlet-name>
+    <url-pattern>/servlet/ColseSessionServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/servlet/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>KichServlet</servlet-name>
+    <url-pattern>/servlet/KichServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+  <display-name></display-name>	
+  <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

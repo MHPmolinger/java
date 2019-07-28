@@ -1,0 +1,226 @@
+javaweb中的知识点：
+1.常用的web服务器有哪些：
+	web服务器：Apache，iis
+
+2.C/S与B/S的优缺点比较
+	BS浏览器服务器
+		优点：对客户端无要求
+		缺点：S成本高
+	CS客户度服务器模式
+		优点：C可以参加运算
+		缺点：重新安装
+
+3.请求方式GET域POST的区别
+	get(默认方式):
+		请求数据放在URL上，即HTTP协议头上以？分割URL和数据，参数以&相连
+		提交数据最大2K(浏览器通常限制URL长度2K)
+		产生1个tcp数据包，浏览器吧HTTP和data一并发送
+		效率高
+	post:
+		请求数据放在HTTP的包体内
+		提交数据最大iis4中80K(服务器规定post提交数据的大小)
+		产生2个tcp数据包，先发送header，再发送data
+		安全
+
+4.Servlet与JSP的生命周期
+	servlet:
+		定义：容器如何创建servlet实例、初始化、调用其方法、销毁实例的整个过程。
+		实例化：容器启动时，检查web.xml中是否有 load-on-starup，若有，创建实例；若无，则当请求到容器时，查找servlet是否存在，如果不存在，创建实例。
+		就绪：
+		销毁：
+	jsp:
+		转换，编译，加载并实例化，初始化，请求处理，销毁。
+
+5.Servlet编写的及映射的多种方式（基于注解域基于xml配置的映射)
+	实现方式: 1、实现Servlet接口 2、 继承GenericServlet类 3、继承HttpServlet类
+	web.xml声明：	<servlet>
+				<servlet-name>类名</servlet-name>
+				<servlet-class>包名</servlet-class>
+			</servlet>
+			<servlet-mapping>
+				<servlet-name>类名</servlet-name>
+				<url-pattern>/*</url-pattern>
+			</servlet-mapping>
+	注解：
+
+6.JSP中的4中脚本及之间的比较（小脚本，声明脚本，表达式脚本，注释脚本）
+	小脚本：<%Java代码%>
+	声明脚本：<%! Java代码%>
+	表达式脚本：<%= 表达式%>
+	注解脚本：<!-- HTML注释 -->
+		<%-- 隐藏注释  --%>
+		<% //Java 单行注释 %>
+		<% /*Java 多行注释 */%>
+		<% /**Java 文档注释 */%>
+
+7.JSP中的9大内置对象
+	1、request(javax.servlet.http.HttpServletrequest)
+		该对象代表了客户端的请求信息，主要用于接受通过HTTP协议传送到服务器的数据。（包括头信息、系统信息、请求方式以及请求参数等）。request对象的作用域为一次请求。
+
+	2、response(javax.servlet.http.HttpServletResponse)
+		是对客户端的响应，主要是将JSP容器处理过的对象传回到客户端。response对象也具有作用域，它只在JSP页面内有效。封装了jsp产生的响应,然后被发送到客户端以响应客户的请求
+
+	3、session(javax.servlet.http.HttpSession)
+
+		由服务器自动创建的与用户请求相关的对象。服务器为每个用户都生成一个session对象，用于保存该用户的信息，跟踪用户的操作状态。session对象内部使用Map类来保存数据，因此保存数据的格式为 			“Key/value”。 session对象的value可以使复杂的对象类型，而不仅仅局限于字符串类型。
+
+	4、application(javax.servlet.ServletContext)
+
+ 		可将信息保存在服务器中，直到服务器关闭，否则application对象中保存的信息会在整个应用中都有效。与session对象相比，application对象生命周期更长，类似于系统的“全局变量”。
+
+	5、out(javax.servlet.jsp.jspWriter)
+
+		用于在Web浏览器内输出信息，并且管理应用服务器上的输出缓冲区。在使用 out 对象输出数据时，可以对数据缓冲区进行操作，及时清除缓冲区中的残余数据，为其他的输出让出缓冲空间。待数据输出完			毕后，要及时关闭输出流。
+
+	6、pageContext(javax.servlet.jsp.PageContext)
+
+		作用是取得任何范围的参数，通过它可以获取 JSP页面的out、request、reponse、session、application 等对象。pageContext对象的创建和初始化都是由容器来完成的，在JSP页面中可以直接使用 				pageContext对象。
+
+	7、config(javax.servlet.ServletConfig)
+
+		作用是取得服务器的配置信息。通过 pageConext对象的 getServletConfig() 方法可以获取一个config对象。当一个Servlet 初始化时，容器把某些信息通过 config对象传递给这个 Servlet。 开发者可以			在web.xml 文件中为应用程序环境中的Servlet程序和JSP页面提供初始化参数。
+
+	8、page(ava.lang.object)
+
+		代表JSP本身，只有在JSP页面内才是合法的。它代表JSP被编译成Servlet,可以使用它来调用Servlet类中所定义的方法, page隐含对象本质上包含当前 Servlet接口引用的变量，类似于Java编程中的 this 		指针。
+
+	9、exception(java.lang.Throwable)
+
+		作用是显示异常信息，只有(<%@page isErrorPage=“true”%>)才可以被使用，在一般的JSP页面中使用该对象将无法编译JSP文件。excepation对象和Java的所有对象一样，都具有系统提供的继承结构。			exception 对象几乎定义了所有异常情况。在Java程序中，可以使用try/catch关键字来处理异常情况； 如果在JSP页面中出现没有捕获到的异常，就会生成 exception 对象，并把 exception 对象传送到在			page指令中设定的错误页面中，然后在错误页面中处理相应的 exception 对象。
+
+8.JSP中的指令（page,include,taglib),动作元素（include,forword,param,useBean,getProperty,setProperty),
+  JSTL核心标签库（c:forEach,c:choose,c:if,c:when,c:otherwrise,c:out,....)
+
+9.EL表达式的基本语法及使用，EL表达式中的11大内置对象（必须要掌握）
+	pageScope：
+		获取pageContext域属性，相当于pageContext.getAttribute("xxx")
+
+	requestScope：
+		获取request域属性，相当于request.getAttribute("xxx")
+
+	sessionScope：
+		获取session域属性，相当于session.getAttribute("xxx")
+
+	applicationScope：
+		获取application域属性，相当于application.getAttribute("xxx")
+
+	param：
+		对应参数，它是一个Map，其中key是参数，value是参数值，适用于单值的参数，相当于request.getParameter("xxx"),表示一个保存了所有请求参数的Map对象
+
+	paramValues：
+		对应参数，她是一个Map，其中key是参数，value是多个参数值，适用于多值的参数，相当于request.getParameterValues("xxx")
+
+	header：
+		对应请求头，它是一个Map，其中key表示头名称，value是单个头值，适用于单值的请求头，相当于request.getHeader("xxx")
+
+	headerValues：
+		对应请求头，它是一个Map，其中key表示头名称，value是多个头值，适用于多值的请求头，相当于request.getHeaders("xxx")
+
+	initParam：
+		获取web.xml中<context-param>内的参数，${ initParam.xxx}，xxx就是<param-name>标签内的值，进而得到<param-value>中的值,表示一个保存了所有web应用初始化参数的map对象
+
+	cookie：
+		用于获取cookie，Map<String,Cookie>，其中key是cookie的name，value是cookie对象，例如${cookie.JSESSIONID.value }就是获取sessionId
+
+	pageContext：
+		可以获取JSP九大内置对象，相当于使用该对象调用getxxx()方法，例如pageContext.getRequest()可以写为${pageContext.request)
+
+	EL表达式在获取Map的值或Bean的属性值是，可以使用“点”的方法，也可以使用“下标”的方法。${initParam.a}与${initParam['a']}，它们是完成的东西相同的。
+
+	但是，如果Map的键或Bean的属性名中包含下划线或横岗时，那么就必须使用“下标”方法，例如：${initParam['a_a']}
+
+10.什么是会话技术及会话技术的实现及区别
+
+	定义：用户打开浏览器，访问Web服务器上多个资源，然后关闭浏览器，整个过程称之为一次会话。
+
+	常用的会话技术：
+
+		Cookies：数据放在浏览器，不安全
+			cookie1.setMaxAge(0);//立刻失效 
+			cookie.setMaxAge(-1);//关闭浏览器失效
+			cookie2.setMaxAge(3600);//1小时候生效
+
+		Session：数据放在服务器，影响服务器的性能
+			invalidate()销毁对象，或关闭浏览器
+
+		隐藏表单：将会话ID添加到HTML表单元素中提交到服务器
+
+		Url重写：将Session的id信息重写到URL地址中
+
+11.过滤器的运行原理及实现（基于注解与基于xml配置隐式拦截）
+	与mapping有关，与声明无关，注解的最后执行。
+
+12.过滤器在项目开发中的应用
+
+	解决全栈乱码
+
+	权限校验
+
+	内容过滤
+
+13.监听器的实现原理及8个监听器接口（对request,session,application对象及属性的监听）
+
+	3种事件源：ServletContext
+
+		HttpSession
+
+		ServletReques
+
+	监听对象的创建：
+
+   		ServletContext:主要监听servletContext的创建，需要实现ServeltContextListener接口。
+
+  		ServletRequest:主要监听request的创建， 需要实现ServletRequestListener接口
+
+   		HttpSession:主要监听session的创建，需要实现HttpSessionListener接口
+
+
+	监听属性的改变：
+
+
+ 		ServletContext:主要监听servletContext属性的更改、添加、删除，需要实现ServeltContextAttrbuteListener接口。
+
+ 		ServletRequest:主要监听request属性的更改、添加、删除， 需要实现ServletRequestAttrbuteListener接口
+
+   		HttpSession:主要监听session属性的更改、添加、删除，需要实现HttpSessionAttrbuteListener接口
+
+
+	监听session的活化与钝化：
+	
+		httpSessionActivationListener主要监听了session的活化(数据从硬盘重新加载回内存)与钝化(数据从内存序列化硬盘)
+
+	监听session与对象的绑定：
+
+		httpSessionBindingListener监听了session与对象的绑定
+
+14.监听器在项目开发中的应用
+
+	监控
+
+	定时扫描
+
+	在线统计
+
+15.MVC设计模式及其应用
+
+16.Ajax技术
+
+17.xml解析技术
+
+18.表单数据回显（利用el及函数,jstl综合应用）
+
+19.oracle，mysql数据库的分页及其代码实现
+
+20.表单的重复提交解决方案及表单的服务器端校验
+
+21.上传与下载(Servlet3.0，apache的FileUpload）
+
+22.数据库连接池技术(C3P0,DBCP，阿里的druid)
+
+23.一对多，多对多，一对一的实体设计到数据库表的创建，及CRUD操作。
+
+24.JavaMail邮件开发
+
+25.在线支付技术
+
+26，类中成员变量，方法中局部变量

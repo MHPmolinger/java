@@ -1,0 +1,43 @@
+1.JSP的全称：Java Server Page，jsp的本质是一个Servlet类，因为当请求xxx.jsp时其实不是真正执行该jsp
+而是要把该jsp转换成一个Servlet类（默认是用户第一次请求处理 该过程），后面的运行及声明周期过程和servlet是类似的，
+2.在jsp中可以定义如下几种类型的脚本：
+ （1）小脚本，格式为<%   在中间可以定义各种类型的Java语句;      %>
+  在该脚本中可以定义变量（作为局部类型的变量），可以定义类（作为方法内部类），但不可以定义方法（因为小脚本中定义的语句被处理
+  成servlet类中的service方法中的一部分，在方法中是不可以定义方法的，但可以定义变量，也可以定义类），
+  在该脚本中可以使用jsp中默认的9打内置对象：
+      out:相当于response.getWriter（）方法返回的输出对象
+      request:HttpServletRequest
+      response:HttpServletResponse
+      config:就是ServletConfig对象
+      application:上下文对象(ServeltContext)
+      page:当前页面对象（this)
+      exception:异常对象，使用该对象是由前提条件
+      session:回话对象
+      pageContext:页面上下文对象
+  （2）声明脚本，语法格式为：<%!       %>
+    在该脚本中可以定义变量（作为成员变量），可以定义各种类型的方法（作为成员方法），可以定义类（作为内部类）,
+    在声明脚本中是不可以使用该9大内置对象
+    （3）表达式脚本：语法格式：<%=表达式   %>,该该表达式中可以使用JSP的9大内置对象
+  （4）注释脚本，格式：<%--     --%>
+  
+3.jslt核心标签库：
+首先需要导入对应jar包，例如：jstl-1.2.jar和standard-1.1.2.jar,该包可以从网络中下载
+需要在jsp页面通过taglib指令来导入，具体导入：
+ <%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
+ 该标签中的属性：prefix:表示前缀，uri:用来指定该标签对应的网络地址（通过展开对应的jar来获取，/META-INF/c.tld）
+ （1）c:forEach:用来表示循环遍历
+    begin:
+    end:
+    var:
+    step:
+    items:用于遍历域中的集合（page,request,session,application4个域）
+    
+  <c:forEach begin="1" end="9" var="i" step="1" />
+    
+4.EL表达式：
+   语法格式：${表达式}
+  在el表达式中可以隐式使用11大内置对象：  requestScope,pageScope,sessionScope,applicationScope,
+      pageContext,param,
+
+    
+    

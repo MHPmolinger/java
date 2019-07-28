@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.mybatis.dao.ProductMapper">
+    <!-- 
+       
+	public Map<String ,Object> findIdAndNameById(int pid);
+	
+	public Map<Integer ,Product> findByIdReturnMap(int pid);
+	
+	public List<Map<String,Object>> findAllReturnList();
+     -->
+     <select id="findIdAndNameById" resultType="map">
+        select name,price from product where pid=#{pid}
+     </select>
+     
+     <select id="findAllReturnList" resultType="map">
+        select pid,name,price,madeTime,pdesc from product
+     </select>
+     
+     <select id="findByIdReturnMap" resultType="com.neusoft.mybatis.domain.Product">
+        select * from product where pid=#{pid}
+     </select>
+</mapper>

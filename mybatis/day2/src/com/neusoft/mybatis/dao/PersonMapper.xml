@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.mybatis.dao.PersonMapper">
+  <!-- 
+     	public Person findById(int id);
+	
+	public Person findByIdcard(int idcard_id);
+	
+	public void save(Person p);
+   -->
+   <insert id="save" parameterType="com.neusoft.mybatis.domain.Person">
+     insert into person(name,gender,idcard_id)values(#{name},#{gender},#{idcard.id})
+   </insert>
+   
+   <select id="findById" resultMap="personIdcard">
+        select * from person where id=#{id}
+   </select>
+   <resultMap type="com.neusoft.mybatis.domain.Person" id="personIdcard">
+        <id column="id" property="pid"/>
+       <result column="gender" property="gender"/>
+       <result column="name" property="name"/>
+       <association property="idcard" 
+       javaType="com.neusoft.mybatis.domain.IdCard" 
+       column="idcard_id" 
+       select="com.neusoft.mybatis.dao.IdCardMapper.findById"/>
+   </resultMap>
+</mapper>

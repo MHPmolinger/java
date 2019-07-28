@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="{CHARSET}">
+		<style type="text/css">
+		*{
+background-color:#0080c0;
+}
+fieldset{
+width:50%;
+margin:5px auto;
+}
+a{
+color:white;
+text-decoration:none;
+}
+.a{
+display:block;
+float:right;}
+a:hover{
+color:white;
+background-color:green;}
+		</style>
+		<title></title>
+	</head>
+	<body>
+	<fieldset>
+	<legend><a name="s">目录</a></legend>
+		<ol>
+			<li><a href="#a1">static</a></li>
+			<li><a href="#a2">创建线程的方法</a></li>
+			<li><a href="#a3">反射</a></li>
+			<li><a href="#a4">接口与抽象类的区别</a></li>
+		</ol></dd><a class="a" href="index.html#home">主页</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a1">static</a></legend>
+		<dd>在内存的datasegment里生成一块内存</dd>
+<dd>要用的时候不用每次都new一个新的内存空间,直接用类名+static的方法名或变量名引用就可以了
+<dd>可被继承，但不能重写。</dd><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a2">创建线程的方法</a></legend>
+		<dd>继承Thread类</dd>
+		<dd>实现Runable接口</dd>
+		<dd>实现Callable接口，用FutureTask封装该类</dd>
+		<dd>通过线程池</dd><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a3">反射</a></legend>
+		<dd>这个机制允许程序在运行时透过Reflection APIs取得任何一个已知名称的class的内部信息，</dd>
+		<dd>包括其modifiers（诸如public, static 等）、superclass（例如Object）、实现之interfaces（例如Cloneable），</dd>
+		<dd>也包括fields和methods的所有信息，并可于运行时改变fields内容或唤起methods。</dd><a class="a" href="#s">目录</a>
+		</fieldset>
+		<fieldset>
+		<legend><a name="a4">接口与抽象类的区别</a></legend>
+		<dd>interface中只能定义方法，而不能有方法的实现，而在abstract class中则既可以定义，也能实现，若之定义，需使用abstract声明</dd>
+		<dd>如果向一个抽象类里加入一个新的具体方法时，那么它所有的子类都一下子都得到了这个新方法，而Java接口做不到这一点，如果向一个Java接口里加入一个 新方法，所有实现这个接口的类就无法成功通过编译了，因为你必须让每一个类都再实现这个方法才行，这显然是Java接口的缺点</dd>
+		<dd>接口和抽象类都可以定义对象，但是只能用他们的具体实现类来进行实例化。</dd><a class="a" href="#s">目录</a></fieldset>
+		
+	</body>
+</html>

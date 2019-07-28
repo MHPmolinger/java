@@ -1,0 +1,58 @@
+处理器映射器与适配器的使用总结：
+1.如果我们采用的是基于注解的方式（@Controller),则springmvc会采用RequestMappingHanderMapping作为
+处理器的映射器，RequestMappingHandlerAdapter作为处理器的适配器，我们可以显示的在springmvc的核心配置文件中
+配置，例如：
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+但我们更多会采用在配置中添加 <mvc:annotation-driven/>就可以了，系统会自动的把前面的处理器映射器与适配器注入进来的。
+2.采用基于xml配置的方式（且是采用实现Contoller接口的方式），我们需要在配置文件中显示的配置处理器映射器与适配器，
+<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
+关于处理器的映射器，会根据我们在xml中的配置会选择两种情况，一种是把bean的name属性作为映射地址的，例如：
+ <bean name="/path" class="com.neusoft.springmvc.handler.UserController" />
+ 这是会采用BeanNameUrlHandlerMapping
+  <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+  如果我们采用的是id属性，则会使用SimpleUrlHandlerMapping作为处理器映射器
+  <bean id="userController" class="com.neusoft.springmvc.handler.UserController"/>
+   <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+      <property name="mappings">
+        <props>
+           <prop key="/path1">自定义处理器的id属性值</prop>
+           <prop key="/path2">userController</prop>
+        </props>
+      </property>
+   </bean>
+3.基于xml配置方式（处理器采用的是实现HttpRequestHandler接口方式），则处理器适配器采用的是HttpRequestHandlerAdapter
+<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+这种方式的处理器映射器和第二种是一样的。
+
+总结：需要大家记住如下的几个处理器适配器类与处理器映射器类：
+处理器映射器类：
+  RequestMappingHandlerMapping:
+  BeanNameUrlHandlerMapping:
+  SimpleUrlHandlerMapping:
+ 处理器的适配器类：
+   RequestMappingHandlerAdapter:
+   SimpleControllerHandlerAdapter:
+   HttpRequestHandlerAdapter:
+4.@RequestMapping注解的使用详解：
+    该注解可以加在类上也可以加在方法上，用来映射请求路径的，该注解有以下的一些常用属性：
+      value属性：
+      method属性：
+      params属性：
+5.注解@AutoWired注解的使用：
+ 该注解通常加在属性及方法上，表示按照类型类进行注入（装配）
+6.@RequestMapping中的通配符问题
+     *  ** ?
+7.处理器中方法的返回值类型：
+   （1）字符串：
+   （2）ModelAndView:
+  (3)void:
+8.在处理器中方法的返回值为字符串中使用：
+   forword:路径----->表示转发
+   redirect:路径------>表示重定向
+9.在处理器中的方法中，可以使用原生的servlet api
+例如HttpServletRequest,HttpServletResponse
+
+   
+   
+     

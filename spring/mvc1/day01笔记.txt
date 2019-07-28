@@ -1,0 +1,80 @@
+springmvc开发环境搭建的步骤：
+1.新建一个javaweb的项目
+2.导入对应springmvc所需要的jar,主要有：
+需要注意的是spring5.x需要jdk的最小版本是jdk8+
+  
+3.在web.xml文件中配置springmvc框架的前端控制器，作用是把所有的请求都交给springmvc框架来处理，
+同时配置初始化参数，目的是用来动态指定springmvc框架的核心配置文件位置与步骤，具体配置如下：
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+id="WebApp_ID" version="3.0">
+  
+    <!-- 配置前端控制器，目的是把所有的请求都交个springmvc框架来处理
+           该前端控制器在spring-webmvc.jar包中
+     -->
+    <servlet>
+       <servlet-name>SpringMVC</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+       <!-- 给前端控制器配置一个初始化参数用来指定springmvc框架的核心配置文件位置及名称，如果没有指定该初始化参数
+         系统默认会用<servlet-name>-servlet.xml作为springmvc框架的默认配置文件，该文件需要放置在/WEB-INF/目录下
+         为了让 程序更加的灵活，我们可以任意的指定springmvc框架的配置文件名称及位置，我们需要配置该初始化参数
+        -->
+        <init-param>
+          <!-- 该属性在DispatcherServlet的父类FrameworkServlet中 -->
+          <param-name>contextConfigLocation</param-name>
+          <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+       <servlet-name>SpringMVC</servlet-name>
+        <!-- 把所有的用户请求都交给springmvc来处理，注意不要使用/* -->
+       <url-pattern>/</url-pattern>
+    </servlet-mapping>
+ 4.创建并配置springmvc框架的核心配置文件，并导入对应的schema头信息
+   需要导入的4个schema分别是：beans,context,aop,mvc,具体如下：
+   <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        
+        </beans>
+5.创建处理handler，任意的类都可以作为处理器（类似于javaweb中的servlet功能）
+在类上使用注解@Controller表示该类作为处理器类，如何把该类及类中的方法映射为对外可以访问（处理）的路径，使用注解
+@RequestMapping，该注解的作用类似于javaweb中的@WebServlet，该注解的value属性的值，必须要以“/”反斜杠开头
+表示相对于项目的跟路径（加在类上的），如果加在方法上的，则反斜杠是相对于当前方法上面映射路径的跟路径（类上有@RequestMappng注解)
+具体如下：
+@Controller
+@RequestMapping(value="/springmvc")
+public class HelloWorldHandler {
+
+	@RequestMapping("/hello")
+	public String testHello(){
+		System.out.println("springmvc框架搭建成功！");
+		return "success";
+	}
+}
+
+6.在springmvc核心配置文件中进行如下的配置：
+  （6.1）配置类扫描的注解解析器，作用是扫描类上的注解，如：@Controller,@RequestMapping等
+ <!-- 配置类扫描的注解解析器 -->  
+      <context:component-scan base-package="com.neusoft.springmvc.web"/>
+  （6.2）配置视图解析器，目的是把处理器中方法返回的逻辑视图转换成对应的物理视图，具体配置：
+     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <!-- 配置前缀 -->
+         <property name="prefix" value="/WEB-INF/jsp/"/>
+         <property name="suffix" value=".jsp"/>
+      </bean>
+ 7.建立测试页面，并进行运行测试：
+  <a href="${pageContext.request.contextPath }/springmvc/hello">test Springmvc</a>

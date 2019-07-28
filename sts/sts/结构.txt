@@ -1,0 +1,32 @@
+rbac
+	src/main/java
+		com.rbac
+			RbacApplication.java
+		com.rbac.config
+			CorsConfig.java
+			MybatisConfig.java
+		com.rbac.controller
+			RoleController.java
+			UserController.java
+		com.rbac.entity
+			Role.java
+			User_Role.java
+			User.java
+		com.rbac.handler
+			Result.java
+		com.rbac.mapper
+			RoleMapper.java
+			UserMapper.java
+		com.rbac.service
+			RoleService.java
+			UserService.java
+		com.rbac.util
+			BaseMapper.java
+	src/main/resources
+		mapper
+			UserMapper.xml
+	src/test/java
+		com/rabc
+			RbacApplicationTests.java
+***********************************
+			

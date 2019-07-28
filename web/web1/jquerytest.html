@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script type="text/javascript" src="js/jquery-1.7.2.js" ></script>
+		<script type="text/javascript">
+			
+			function checkUname(){
+				var uname = document.getElementById("uname");
+				//正则表达式，编写验证规则 
+				//如下规则 字母A-z 数字0-9  最小3位最多6位
+				//js 中   正则表达式  需要写在 / / 中
+				var unameMode = /^[A-Za-z\d]{3,6}$/;
+				//match 是js 的方法   可以用于  将  字符串和  正则表达式进行对比
+				if(uname.value.match(unameMode)){
+					document.getElementById("msg").style.color="green";
+					document.getElementById("msg").innerHTML="用户名合法";
+				}else{
+					document.getElementById("msg").innerHTML="<font color='red'>用户名不合法</font>";
+				}
+			}
+			
+			$(function(){
+				$('#uname').keyup(function(){
+					var $uname = $('#uname');
+					var unameMode = /^[A-Za-z\d]{3,6}$/;
+					if(unameMode.test($uname.val())){
+						$('#msg').css('color','green');
+						$('#msg').html('用户名可用');
+					}else{
+						$('#msg').css({
+							'color':'red',
+							'font-size':'20px'
+				});
+						$('#msg').html('用户名不可用');
+					}
+				});
+			});
+			//([0-9]{2,3})|([A-Z]{3,6})
+			//  [\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?
+			//邮箱  Neu@neusoft.com  
+		</script>
+	</head>
+	<body>
+		<form id="form1" action="index.html" method="get">
+			请输入用户名称：<input type="text" name="uname" id="uname" "/><div id="msg"></div><br>
+		</form>
+	</body>
+</html>

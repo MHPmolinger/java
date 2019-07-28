@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"></properties>
+   <environments default="mysqlDev">
+        
+      <environment id="mysqlDev">
+         <transactionManager type="JDBC"></transactionManager>
+         <dataSource type="POOLED">
+            <property name="driver" value="${driverClass}"/>
+            <property name="url" value="${dburl}"/>
+            <property name="username" value="${user}"/>
+            <property name="password" value="root"/>
+         </dataSource>
+      </environment>
+      <environment id="oracleDev">
+         <transactionManager type="JDBC"></transactionManager>
+         <dataSource type="POOLED">
+            <property name="driver" value="${driverClass}"/>
+            <property name="url" value="${dburl}"/>
+            <property name="username" value="${user}"/>
+            <property name="password" value="${password}"/>
+         </dataSource>
+      </environment>
+   </environments>
+   <mappers>
+       <mapper resource="com/neusoft/mybatis/dao/UserMapper.xml"/>
+       <mapper class="com.neusoft.mybatis.dao.StudentDao"/>
+       <mapper resource="com/neusoft/mybatis/dao/RoleMapper.xml"/>
+       <mapper resource="com/neusoft/mybatis/dao/User2Mapper.xml"/>
+   </mappers>
+</configuration>

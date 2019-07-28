@@ -1,0 +1,25 @@
+OPEN EDITORS
+UNTITLED(WORKSPACE)
+	rbac
+		css
+			index.css
+			login.css
+		images
+		js
+			data-format.js
+		lib
+			layui
+				css
+				font
+				images
+				lsy
+				layui.all.js
+				layui.js
+			jquery.1.8.3.js
+		page
+			auth.html
+			role.html
+		index.html
+		login.html
+********************************		
+D:\java\workspace\vscode\rbac		

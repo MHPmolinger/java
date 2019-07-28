@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.mybatis.dao.IdCardMapper">
+    <!-- 
+       public void save(IdCard idcard);
+	
+	public IdCard findById(int id);
+     -->
+     <insert id="save" parameterType="com.neusoft.mybatis.domain.IdCard">
+        insert into idcard(cardNo)values(#{cardNo})
+     </insert>
+     <select id="findById" parameterType="integer" resultType="com.neusoft.mybatis.domain.IdCard">
+         select * from idcard where id=#{id}
+     </select>
+</mapper>

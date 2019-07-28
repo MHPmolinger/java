@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:context="http://www.springframework.org/schema/context"
+     xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        <!-- 开启类扫描的注解解析器 -->
+        <context:component-scan base-package="com.neusoft.spring"></context:component-scan>
+     <bean id="user" class="com.neusoft.spring.domain.User" scope="singleton">
+             <property name="name" value="李四"></property>
+             <property name="age" value="30"></property>
+             <property name="addresses">
+                <array>
+                   <value>南京东软</value>
+                   <value>雨花区软件人才公寓</value>
+                </array>
+             </property>
+             <property name="mobiles">
+                <list>
+                   <value>12345670</value>
+                   <value>35345435</value>
+                </list>
+             </property>
+             <property name="bankCards">
+               <list>
+                 <bean class="com.neusoft.spring.domain.BankCard" p:cardName="交通银行"></bean>
+                 <bean class="com.neusoft.spring.domain.BankCard" p:cardName="工商银行"></bean>
+                 <bean class="com.neusoft.spring.domain.BankCard" p:cardName="中国银行"></bean>
+               </list>
+             </property>
+          </bean>
+      <bean id="user3" class="com.neusoft.spring.domain.User" p:name="张三" p:age="16"></bean>
+      <bean id="user2" class="com.neusoft.spring.domain.User" scope="prototype">
+        <constructor-arg index="0" type="java.lang.String" value="王五"></constructor-arg>
+        <constructor-arg index="1"  value="20"></constructor-arg>
+      </bean>
+           <bean  id="userDao" class="com.neusoft.spring.dao.UserDao"></bean>
+           <bean id="userService" class="com.neusoft.spring.service.UserService">
+               <!-- property子标签的作用是用来设置bean对象的属性， ref属性表示该属性的值来自于某个bean的id值，表示 关联 -->
+             <property name="userDao" ref="userDao"></property>
+           </bean>
+           <bean id="userService2" class="com.neusoft.spring.service.UserService" p:userDao-ref="userDao"></bean>
+        </beans>
+        

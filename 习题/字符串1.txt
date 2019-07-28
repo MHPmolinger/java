@@ -1,0 +1,147 @@
+public class kkkkk {
+public static void main(String[] args) {
+	String a="Peter";
+	String b="iioijii";
+	char ch=a.charAt(0);		//获取指定位置的字符
+	System.out.println(ch);
+	
+	int s=a.indexOf("e");		//获取第一次出现的索引
+	System.out.println(s);
+	
+	int n=a.indexOf("e",2);		//获取从指定位置开始出现的索引
+	System.out.println(n);
+	
+	int d=b.lastIndexOf("i");		//获取最后一次出现的索引
+	System.out.println(d);
+	
+	int k=b.lastIndexOf("i",4);		//获取从指定位置开始上一次出现的索引
+	System.out.println(k);
+}
+}
+
+public class kj {
+public static void main(String[] args) {
+	String s="656254199310223625";
+	String f=s.substring(6);		//截取从指定位置到结所有字符串
+	System.out.println(f);
+	
+	String g=s.substring(6,14);		//截取区间字符串
+	System.out.println(g);
+}
+}
+
+public class kj {
+public static void main(String[] args) {
+	String s="656254199310223625.java";
+	boolean f=s.endsWith(".java");			//判断字符串结束内容
+	System.out.println(f);
+	boolean g=s.endsWith(".jpg");
+	System.out.println(g);
+	
+	String o="中国人民政府快快快";
+	boolean m=o.startsWith("中间");				//判断字符串开始内容
+	System.out.println(m);
+	boolean n=o.startsWith("中国");
+	System.out.println(n);
+	
+	String a="asd",		b="asd",	c="ASD";
+	System.out.println(a==b);
+	System.out.println(a.equals(c));
+	System.out.println(a.equalsIgnoreCase(c));
+	
+	String o=new String("asd"),	p=new String("asd"),	q=new String("ASD");
+	System.out.println(o==p);
+	System.out.println(o.equals(q));			//判断字符串是否相等
+	System.out.println(o.equalsIgnoreCase(q));	  //判断字符串忽略大小写后是否相等
+
+	String b,c,a="		a s	d ";
+	b=a.trim();//去首尾空白
+	c=a.replaceAll("\\s", "");				//去所有空白
+	System.out.println(a);
+	System.out.println(b);
+	System.out.println(c);
+
+	String a="8888",	b="B888";
+	if(a.indexOf("B")>-1)					//字符串查找
+		System.out.println("a存在B");
+	if(b.indexOf("B")>-1)
+		System.out.println("b存在B");
+	
+	String l="hkABC";
+	System.out.println(l);
+	System.out.println(l.toUpperCase());			//大写
+	System.out.println(l.toLowerCase());			//小写
+
+	String a="192.168.0.1";
+	String[]b=a.split("\\.");				//字符串分割
+	String[]c=a.split("\\.", 3);
+	for(String temp:b)
+		System.out.print("["+temp+"]");
+	System.out.println();
+	for(String temp:c)
+		System.out.print("["+temp+"]");
+
+	StringBuffer l=new StringBuffer("门前大桥下");
+	System.out.println(l.toString());
+	l.append("游过一群鸭");					//追加字符
+	System.out.println(l.toString());
+	StringBuffer o=new StringBuffer("快来快来数一数");
+	l.append(o);
+	System.out.println(l.toString());
+	int n=24678;
+	l.append(n);
+	System.out.println(l.toString());
+
+	StringBuffer l=new StringBuffer("门前大桥下");
+	l.setCharAt(1,'o');					//修改指定索引字符
+	System.out.println(l.toString());
+	l.insert(3,"666");					//插入字符串
+	System.out.println(l.toString());
+	l.reverse();						//反序输出
+	System.out.println(l.toString());
+	l.delete(1, 3);						//删除字符串
+	System.out.println(l.toString());
+}
+}
+
+import java.util.Date;
+
+public class kj {
+public static void main(String[] args) {
+	Date k=new Date();
+	System.out.println(k);
+	String year=String.format("%tY", k);
+	String month=String.format("%tB", k);
+	String day=String.format("%td", k);
+	System.out.println("tY:"+year+"\ttB:"+month+"\ttd:"+day);
+	String hour=String.format("%tH", k);
+	String minute=String.format("%tM", k);
+	String second=String.format("%tS",k);
+	System.out.println("tH:"+hour+"\ttM:"+minute+"\ttS:"+second);
+	String a=String.format("%tF",k);
+	String b=String.format("%tD",k);
+	String c=String.format("%tr",k);
+	String d=String.format("%tc",k);
+	System.out.println("tF	"+a);
+	System.out.println("tD	"+b);
+	System.out.println("tr	"+c);
+	System.out.println("tc	"+d);
+
+	System.out.println(String.format("x的大写：%c",'C'));
+	System.out.println(String.format("π取两位小数点：%.2f",Math.PI));
+	System.out.println(String.format("2<3:%b",2<3));
+	System.out.println(String.format("金%d%%观后感%d%%具", 5,9));
+
+
+	String s = "\\w+@\\w+(\\.w{2,3})*\\.\\w{2,3}";// 正则表达式
+		Scanner o = new Scanner(System.in);
+		while (true) 
+		{
+			String x = o.nextLine();
+			if (x.matches(s))
+				System.out.println(x + "是邮箱");
+			else
+				System.out.println(x + "不是邮箱");
+		}
+}
+}

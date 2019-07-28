@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style type="text/css">
+*{
+background-color:#0080c0;
+}
+fieldset{
+width:50%;
+margin:5px auto;
+}
+a{
+color:white;
+text-decoration:none;
+}
+.a{
+display:block;
+float:right;}
+a:hover{
+color:white;
+background-color:green;}
+#button,#nav,#obo{
+display:none;}
+</style>
+<script>
+onload=function(){
+}
+function button(){
+	if(getComputedStyle(document.getElementById("button")).display=="none"){
+		document.getElementById("button").style.display="block";
+		return;}
+	if(getComputedStyle(document.getElementById("button")).display=="block"){
+		document.getElementById("button").style.display="none";
+		}
+}
+function nav(){
+	if(getComputedStyle(document.getElementById("nav")).display=="none"){
+		document.getElementById("nav").style.display="block";
+		return;}
+	if(getComputedStyle(document.getElementById("nav")).display=="block"){
+		document.getElementById("nav").style.display="none";
+		}
+}
+function obo(){
+	if(getComputedStyle(document.getElementById("obo")).display=="none"){
+		document.getElementById("obo").style.display="block";
+		return;}
+	if(getComputedStyle(document.getElementById("obo")).display=="block"){
+		document.getElementById("obo").style.display="none";
+		}
+}
+</script>
+    <title>css</title>
+</head>
+<body>
+<fieldset><legend><a name="s">目录</a></legend>
+<dd><a href="#a1">超链接伪类</a></dd>
+<dd><a href="#a2">div</a></dd>
+<dd><a href="#a3">字体</a></dd>
+<dd><a href="#a4">文本</a></dd>
+<dd><a href="#a5">ul</a></dd>
+<dd><a href="#a6">选择器</a></dd>
+<dd><a href="#a7">css的引用</a></dd>
+<dd><a href="#a8">伪元素</a></dd>
+<dd><a href="#a9">属性选择器</a></dd>
+<dd><a href="#a10">否定伪类</a></dd>
+<dd><a href="#a11">position</a></dd>
+<dd><a href="#a12">opacity</a></dd>
+<dd><a href="#a13">border-radius</a></dd>
+<dd><a href="#a14">实例</a></dd>
+<dd><a href="#a15">transition</a></dd><a class="a" href="index.html#s">主页</a>
+</fieldset>
+<dl><fieldset><legend><a name="a1">超链接伪类</a></legend>
+
+	<dd>a:link	未单击访问时</dd>
+	<dd>a:visited	单击访问过后</dd>
+	<dd>a:hover	鼠标悬浮</dd>
+	<dd>a:active	单击未释放</dd>
+<xmp>
+	顺序：a:link{text-decoration: none}	a:visited	a:hover	a:active</xmp><a class="a" href="#s">目录</a>
+	</fieldset>
+<fieldset><legend><a name="a2">div</a></legend>
+	<dd>清除浮动		clear: left;</dd>
+	<dd>边框		border:1px dashed red;</dd>
+	<dd>margin		上右下左</dd>
+	<dd>背景图片		background-image: url("g.gif");</dd>
+	<ul>
+		<li>background-position：图片位置</li>
+		<li>background-attachment：图片是否滚动</li>
+		<ul>
+			<li>scroll：默认值，随窗口滚动</li>
+			<li>fixed：固定在某一位置</li>
+		</ul>
+	</ul><a class="a" href="#s">目录</a>
+</fieldset>
+<fieldset><legend><a name="a3">字体</a></legend>
+	<dd>类型		font-family: HAKUYOXingShu3500;</dd>
+	<dd>大小		font-size:25px;</dd>
+	<dd>粗细		font-weight: bold;	</dd>
+	<dd>样式		font-style: italic;</dd>
+	<dd>顺序		font: 25px HAKUYO(大小倒数第二，字体倒数第一，其他无要求)</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a4">文本</a></legend>
+	<dd>颜色		color: red;</dd>
+	<dd>大小写：text-transform</dd>
+	<ul>
+		<li>none：默认值</li>
+		<li>capitalize：首字母大写</li>
+		<li>uppercase 大写</li>
+		<li>lowercase 小写</li>
+	</ul>
+	<dd>对齐方式：	text-align</dd>
+	<ul>
+		<li>left： 默认值，左对齐</li>
+		<li>right：右对齐</li>
+		<li>center：居中对齐</li>
+		<li>justify：两端对齐</li>
+	</ul>
+	<dd>首行缩进		text-indent: -1550px;</dd>
+	<dd>装饰	：	text-decoration</dd>
+	<ul>
+		<li>none：默认值</li>
+		<li>underline ：下划线</li>
+		<li>overline：上划线</li>
+		<li>line-through：删除线</li>
+	</ul>
+	<dd>display</dd>
+	<ul>
+		<li>none: 不显示，不占位置</li>
+		<li>block: 块元素显示</li>
+		<li>inline：内联元素显示</li>
+		<li>inline-block：行内块元素显示</li>
+	</ul>
+	<dd>visibility</dd>
+	<ul>
+		<li>visible ：默认值，在页面显示</li>
+		<li>hidden ：隐藏不显示，位置依然保持</li>
+	</ul>
+	<dd>overflow</dd>
+	<ul>
+		<li>visible：默认值，在父元素以外的位置显示</li>
+		<li>hidden： 溢出的内容，不会显示</li>
+		<li>scroll,：会为父元素添加滚动条</li>
+		<li>auto：根据需求自动添加滚动条</li>
+	</ul>
+	<dd>行高		line-height: 100px;</dd>
+	<dd>字符间距：letter-spacing</dd>
+	<dd>单词间距：wordr-spacing</dd>
+	<dd>行间距		(line-height)-(font-size)</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a5">ul</a></legend>
+	<dd>无黑点		list-style: none;</dd>
+	<dd>图片替换黑点		list-style-image: url(12.JPG);</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a6">选择器</a></legend>
+	<dd>通配选择器</dd>
+	<xmp>
+		* {
+				font-size: x-large;
+			}
+	</xmp>
+	<dd>并集选择器</dd>
+	<xmp>
+		#a,#d {
+				background-color: #00FFFF;
+			}
+	</xmp>
+	<dd>交集选择器</dd>
+	<xmp>
+		p.a {
+				background-color: #32CD32;
+			}
+	</xmp>
+	<dd>后代选择器</dd>
+	<xmp>
+		#b span{
+				color: #AC741C;
+			}
+	</xmp>
+	<dd>子选择器</dd>
+	<xmp>
+		#c>span{
+				background-color: red;
+			}
+	</xmp>
+	<dt>子元素选择器</dt>
+	<dd>p:first-child：选择第一个子元素p</dd>
+	<dd>p:last-child：选择最后一个子元素p</dd>
+	<dd>p:nth-child(odd)：选择所有奇数位置元素p</dd>
+	<dd>p:nth-child(even)：选择所有偶数位置元素p</dd>
+	<dd>p:first-of-type：选择每代第一个元素p</dd>
+	<dd>p:last-of-type：选择每代最后一个元素p</dd>
+
+<dt>兄弟元素选择器</dt>
+	<dd>span + p：选择span后的第一个p元素</dd>
+	<dd>span ~ p：选择span后的所有p元素</dd>
+	<dt>选择器优先级</dt>
+	<dd>!important->内联样式->id选择器->类选择器->通配选择器</dd>
+<xmp>
+	.p1{
+		background-color: greenyellow !important;
+	}
+</xmp><a class="a" href="#s">目录</a>
+</fieldset>
+<fieldset><legend><a name="a7">css的引用</a></legend>
+	<dd>内部样式表</dd>
+		<xmp>
+			<head>
+				<style type="text/css">
+				</style>
+			</head>
+		</xmp>
+	<dd>行内样式表</dd>
+		<xmp>
+			<body>
+				<p style="color:green;">你好</p>
+			</body>
+		</xmp>
+	<dd>外部样式表</dd>
+		<xmp>
+			<head>
+				<link rel="stylesheet" href="s.css"/>
+			</head>
+		</xmp>
+<a class="a" href="#s">目录</a></fieldset>
+
+
+<fieldset><legend><a name="a8">伪元素</a></legend>
+					<ul>
+						<li>p:first-letter：	为p中第一个字符来设置一个样式</li>
+						<li>p:first-line	：	为p中的第一行设置一个样式</li>
+						<li>p:before：	元素最前边加入内容</li>
+<xmp>
+	p:before{
+	content: "我会出现在整个段落的最前边";
+	color: red;
+	}</xmp>
+						<li>p:after	：	元素最后边加入内容</li>
+<xmp>
+	p:after{
+	content: "我会出现在整个段落的最后边";
+	color: red;
+	}</xmp>
+					</ul><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a9">属性选择器</a></legend>
+	<dd>p[title]:	选择具有title属性的p元素</dd>
+	<dd>p[title="o"]:	选择title=o的p元素</dd>
+	<dd>p[title^="a"]:	选择title以a开头的p元素</dd>
+	<dd>p[title$="c"]:	选择title以c结尾的p元素</dd>
+	<dd>p[title*="c"]:	选择title有c的p元素</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a10">否定伪类</a></legend>
+	<dd>p:not(.o)：选择除了class值为o的所有p元素</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a11">position</a></legend>
+	<dd>static：默认值，元素没有开启定位</dd>
+	<dd>relative：相对定位</dd>
+	<dd>absolute：绝对定位</dd>
+	<dd>fixed：固定定位，固定在浏览器窗口某个位置，不会随滚动条滚动</dd><a class="a" href="#s">目录</a></fieldset>
+<fieldset><legend><a name="a12">opacity</a></legend>
+	<dd>[0,1]：越大越清晰</dd><a class="a" href="#s">目录</a></fieldset>
+	<fieldset><legend><a name="a13">border-radius</a></legend>
+	<dd>圆角</dd><a class="a" href="#s">目录</a></fieldset>
+	<fieldset><legend><a name="a14">实例</a></legend>
+	<dd><a href="javascript:button()">按钮制作</a></dd>
+	<div id="button" >
+<xmp>
+	a{
+		display:block;
+		background-image:url("");
+		width:90px;
+		height:30px;
+		background-repeat:no-repeat;
+		background-position:center;
+		opacity:0.7;
+	}
+	a:hover{
+		opacity:1;
+	}</xmp>	
+	</div>
+	<dd><a href="javascript:nav()">导航</a></dd>
+	<div id="nav" >
+<xmp>
+	<!--清除默认样式-->
+	*{
+		padding:0px;
+		margin:0px;
+	}
+	div{
+		margin:50px auto;
+		text-align:center;
+		height:30px;
+		width;1000px;
+		background-color:red;
+		<!--解决高度塌陷-->
+		overflow:hidden;
+	}
+	li{
+		float:left;
+		height:30px;
+		line-height:30px;
+		width:20%;
+		<!--去除项目符号-->
+		list-style:none;
+	}
+	a{
+		text-decoration:none;
+		color:white;
+		font-weiht:bold;
+		display:block;
+	}
+	a:hover{
+		background-color:yellow;
+	}
+	<!--html-->
+	<div>
+		<ul>
+			<li><a href="">首页</a></li>
+			<li><a href="">首页</a></li>
+		</ul>
+	</div></xmp></div>
+	
+	<dd><a href="javascript:obo()">文字逐个显示</a></dd>
+	<div id="obo" >
+<xmp>
+	<script type="text/javascript">
+		onload = t;
+		var index = 0;
+		var word="0123";
+		function t(){
+			$("#p").html(word.substring(0,index++));
+			if(index > word.length) {
+				return;
+			} else {
+				setTimeout(t,1000);
+			};
+		}
+	</script></xmp></div><a class="a" href="#s">目录</a></fieldset>
+	<fieldset><legend><a name="a15">transition</a></legend>
+<xmp>
+	div {
+		width: 100px;
+		height: 100px;		
+	}
+
+	div:hover {
+		width: 300px;
+		height: 300px;
+		transition: width 3s ,height 1s liner;
+	}</xmp>
+	<dt>transition-property：属性的名称</dt>
+	<dt>transition-duration：过渡效果的时间</dt>
+	<dt>transition-timing-function：过渡效果的时间曲线</dt>
+		<dd>ease (默认)：慢速开始，中间变快，慢速结束</dd>
+		<dd>liner：匀速</dd>
+		<dd>ease-in：慢速开始</dd>
+		<dd>ease-out：慢速结束</dd>
+		<dd>ease-in-out：慢速开始，慢速结束</dd>
+		<dd>cubic-bezier(n, n, n, n)：自定义 0 ~ 1 之间的数值</dd>
+
+	<a class="a" href="#s">目录</a></fieldset>
+</body>
+</html>

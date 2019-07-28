@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- mapper标签中的属性：
+    namespace属性：值通常是对应接口类的完整路径（包名+接口类名）
+  -->
+<mapper namespace="com.neusoft.mybatis.dao.UserDao">
+    <!-- 
+       insert标签对应的是执行插入操作，其属性介绍：
+       id属性：是表示接口中对应的方法名称（UserDao.save(User user))
+       parameterType:用来指定该接口方法中参数的类型的，因为这里是User->com.neusoft.mybatis.domain.User
+       
+       标签内容为：对应的sql语句，注意后面不能用分号（；），
+        #{}表示该位置的值是实体类中的某个属性名称，用来获取对象的对应属性值，并把该值设置到当前列上来
+     -->
+   <insert id="save" parameterType="com.neusoft.mybatis.domain.User">
+     insert into tb_user(userId,name,age,birthday)values(#{userId},#{name},#{age},#{birthday})
+   </insert>
+   <select id="findById" parameterType="string" resultType="com.neusoft.mybatis.domain.User">
+      select * from tb_user where userId=#{userId}
+   </select>
+   <select id="findAll" resultType="com.neusoft.mybatis.domain.User">
+       select * from tb_user
+   </select>
+   <delete id="deleteById" parameterType="string">
+      delete from tb_user where userId=#{userId}
+   </delete>
+   <update id="updateUser" parameterType="com.neusoft.mybatis.domain.User">
+     update tb_user set name=#{name},age=#{age},birthday=#{birthday} where userId=#{userId}
+   </update>
+     <!-- 
+     public User findByNameAndId(@Param("userName")String name,@Param("id")String userId);
+        -->
+   <select id="findByNameAndId" resultType="com.neusoft.mybatis.domain.User">
+      select * from tb_user where name=#{userName} and userId=#{id}
+   </select>
+   <!-- 	public User findByMap(Map<String,Object> map); -->
+   <select id="findByMap" resultType="com.neusoft.mybatis.domain.User">
+      select * from tb_user where userId=#{uid}
+   </select>
+   <!-- public User findByListId(List<String> ids); -->
+   <select id="findByListId" resultType="com.neusoft.mybatis.domain.User">
+      select * from tb_user where userId=#{list[0]}
+   </select>
+</mapper>

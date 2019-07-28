@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+      
+      <!-- 配置类扫描的注解解析器 -->  
+      <context:component-scan base-package="com.neusoft.springmvc.web"/>
+      <!-- 配置视图解析器，目的是把逻辑视图名称解析为具体的物理视图,该视图解析器类也在spring-webmvc.jar包中
+         如何把逻辑视图解析为物理视图，
+         在handler处理器中返回的字符串success表示逻辑视图，对应的物理视图为：prefix+逻辑视图+suffix
+             也就是 /WEB-INF/jsp/success.jsp
+       -->
+      <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+         <!-- 配置前缀 -->
+         <property name="prefix" value="/WEB-INF/jsp/"/>
+         <property name="suffix" value=".jsp"/>
+      </bean>
+        
+</beans>

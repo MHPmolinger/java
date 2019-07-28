@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.neusoft.mybatis.dao.one2one.PersonMapper">
+   <!-- 
+      	public  void save(Person p);
+	
+	public Person findById(int pid);
+	
+	public Person findByCid(int cid);
+	
+	public List<Person> findAll();
+	
+	public List<Person> findByName(String name);
+    -->
+      <insert id="save" parameterType="com.neusoft.mybatis.one2one.domain.Person">
+         insert into person(name,gender,idcard_cid)values(#{name},#{gender},#{idcard.cid})
+      </insert>
+      <!--  -->
+      
+      <select id="findById" resultMap="myfindByIdMap">
+         select * from person where pid=#{pid}
+      </select>
+      <resultMap type="com.neusoft.mybatis.one2one.domain.Person" id="myfindByIdMap">
+         <!-- id子标签的作用：是用来表示查询中的主键列的，要把主键列的值设置到对应实体的那个属性上去，column属性表示是查询中的列名称，property属性表示的是实体类中的属性名称 -->
+         <id column="pid" property="pid" />
+          <!-- result子标签的作用：是用来进行普通列到实体类中属性的映射的， -->
+         <result column="name" property="name"/>
+         <result column="gender" property="gender" javaType="boolean" />
+         <!-- association子标签的作用：是用来进行关联查询的封装的
+             property属性：表示当前查询实体类中的关联的实体属性名称，例如：private IdCard idcard;
+             column属性：用来指定当前的查询中的外键列的名称的 ,当前外键列的民称为idcard_cid
+             javaType属性：用来指定当前关联的实体属性的类型的，这里为身份证类的类型：com.neusoft.mybatis.one2one.domain.IdCard
+             select属性：用来指定那个名称空间下的子查询的，这里表示用该外键列的值，作为select所指定的查询的入口参数进行二次查询
+                      执行namespace为com.neusoft.mybatis.dao.one2one.IdCardMapper下的id为findById的查询，该查询需要一个id的参数，该参数
+                      就来自于当前的外键列的值
+                      该查询我们称为分布查询：
+                        Stirng sql1="select pid,name,gender,idcard_cid from person where pid=#{pid}
+                        String sql2="select cid cardNo from idcard where cid=#{idcard_cid}
+          -->
+         <association property="idcard" column="idcard_cid" 
+                      javaType="com.neusoft.mybatis.one2one.domain.IdCard" 
+                      select="com.neusoft.mybatis.dao.one2one.IdCardMapper.findById">
+            
+         </association>
+      </resultMap>
+</mapper>

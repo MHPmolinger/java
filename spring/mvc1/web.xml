@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns="http://java.sun.com/xml/ns/javaee" 
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+id="WebApp_ID" version="3.0">
+  
+    <!-- 配置前端控制器，目的是把所有的请求都交个springmvc框架来处理
+           该前端控制器在spring-webmvc.jar包中
+     -->
+    <servlet>
+       <servlet-name>SpringMVC</servlet-name>
+       <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+       <!-- 给前端控制器配置一个初始化参数用来指定springmvc框架的核心配置文件位置及名称，如果没有指定该初始化参数
+         系统默认会用<servlet-name>-servlet.xml作为springmvc框架的默认配置文件，该文件需要放置在/WEB-INF/目录下
+         为了让 程序更加的灵活，我们可以任意的指定springmvc框架的配置文件名称及位置，我们需要配置该初始化参数
+        -->
+        <init-param>
+          <!-- 该属性在DispatcherServlet的父类FrameworkServlet中 -->
+          <param-name>contextConfigLocation</param-name>
+          <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+    </servlet>
+    <servlet-mapping>
+       <servlet-name>SpringMVC</servlet-name>
+        <!-- 把所有的用户请求都交给springmvc来处理，注意不要使用/* -->
+       <url-pattern>/</url-pattern>
+    </servlet-mapping>
+  <display-name>springmvc_day01</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>
